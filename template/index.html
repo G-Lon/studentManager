@@ -65,7 +65,7 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <p class="navbar-text navbar-right">
-                                <span class="welcome">欢迎【XXX】登录</span>
+                                <span class="welcome">欢迎【{{ value.userInfo }}】登录</span>
                                 <a href="#" class="logout">退出</a>
                             </p>
                         </div>
@@ -125,14 +125,16 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">小黑</th>
-                                    <td>12</td>
-                                    <td>不详</td>
-                                    <td>7777777</td>
+                                    {{ each result value }}
+                                    <th scope="row">{{ value.name }}</th>
+                                    <td>{{ value.age }}</td>
+                                    <td>{{ value.sex }}</td>
+                                    <td>{{ value.phone }}</td>
                                     <td>
                                         <button type="button" class="btn btn-success">编辑</button>
                                         <button type="button" class="btn btn-danger">删除</button>
                                     </td>
+                                   {{ /each }}
                                 </tr>
                             </tbody>
                         </table>
