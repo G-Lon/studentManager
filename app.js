@@ -8,7 +8,7 @@ let app = express();
 app.use(express.static('static'))
 
 // 监听服务
-app.listen(3000,'127.0.0.1',()=>{
+app.listen(8848,'127.0.0.1',()=>{
     console.log('success');
     
 })
