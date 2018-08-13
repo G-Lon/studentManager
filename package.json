@@ -1,0 +1,23 @@
+{
+  "name": "studentManager",
+  "version": "1.0.0",
+  "description": "基于express、node、bootstrap的学生管理系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/G-Lon/studentManager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/G-Lon/studentManager/issues"
+  },
+  "homepage": "https://github.com/G-Lon/studentManager#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
