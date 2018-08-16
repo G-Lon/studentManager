@@ -123,30 +123,7 @@ router.get('/vCode', function (req, res) {
 });
 
 
-// 首页
-router.get('/index', (req, res) => {
-    // console.log(req.session.userName);
-    let userInfo = req.session.userName;
-    // console.log(result);
-    if (userInfo) {
-        userInfo = {userInfo}
-        MgDB.find('student',{},(result)=>{
-            result.push(userInfo)
-            console.log(result);
-            let html = template(path.join(__dirname, '../template/index.html'), {
-                result
-            })
-            res.send(html);
-        })
-        
 
-       
-    }else {
-        res.send(`<script>alert('你还未登录，请先登录');window.location = '/manager/login'</script>`)
-    }
-
-
-});
 
 
 // 暴露出去

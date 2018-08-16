@@ -23,22 +23,23 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   cookie: { 
-    maxAge: 1000 * 60 * 30, // harlf of hour
+    maxAge: 1000 * 60 * 30 * 2, // harlf of hour
     // secure: false
    }
 }))
 
 
 // 引入自己写的路由
-const router = require('./route/managerRoute');
+const managerRouter = require('./route/managerRoute');
+const adminRouter = require('./route/adminRoute');
 
 // 托管静态资源
 app.use(express.static('static'));
 
 // 使用自己写的路由
-app.use('/manager',router);
+app.use('/manager',managerRouter);
 
-app.use('/admin',router);
+app.use('/admin',adminRouter);
 
 // 监听服务
 app.listen(8848,'127.0.0.1',()=>{

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>首页</title>
+    <title>新增</title>
 
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,8 +30,18 @@
             padding: 0;
         }
 
-        th,td,tr {
+        th,
+        td,
+        tr {
             text-align: center;
+        }
+
+        .pathNav li:hover a {
+            text-decoration: none;
+        }
+
+        .instruct {
+            resize: none;
         }
     </style>
 
@@ -65,8 +75,8 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <p class="navbar-text navbar-right">
-                                <span class="welcome">欢迎【{{ userInfo }}】登录</span>
-                                <a href="/admin/logout" class="logout">退出</a>
+                                <span class="welcome">欢迎【{{ userName }}】登录</span>
+                                <a href="#" class="logout">退出</a>
                             </p>
                         </div>
                         <!-- /.navbar-collapse -->
@@ -88,57 +98,67 @@
                 <!--  -->
                 <div class="panel panel-default col-md-9" id="list">
                     <div class="panel-heading">
-                        <ol class="breadcrumb">
+                        <ol class="breadcrumb pathNav">
                             <li>
-                                <a href="#">首页</a>
+                                <a href="index.html">首页</a>
                             </li>
                             <li>
                                 <a href="#">学生管理</a>
                             </li>
-                            <li class="active">学生列表</li>
+                            <li class="active">新增学生</li>
                         </ol>
                     </div>
 
-                    <div class="panel-heading">
-                        <form class="form-inline">
+
+                    <div class="panel-body">
+                        <form class="form-horizontal" method="POST" action="/admin/edit">
+                            <input type="hidden" name="id" value="{{ result._id }}">
                             <div class="form-group">
-                                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">学生姓名</div>
-                                    <input type="text" name="key" class="form-control" id="exampleInputAmount" placeholder="请输入学生姓名进行查询">
+                                <label for="inputName" class="col-sm-2 control-label">姓名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="userName" name="userName" placeholder="请输入姓名" value="{{ result.userName }}">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">查找</button>
-                            <a href="/admin/add" class="btn btn-warning">新增</a>
+                            <div class="form-group">
+                                <label for="inputAge" class="col-sm-2 control-label">年龄</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="userAge" name="userAge" placeholder="请输入年龄" value="{{ result.userAge }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSex" class="col-sm-2 control-label">性别</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="userSex" name="userSex" placeholder="请输入性别" value="{{ result.userSex }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPhone" class="col-sm-2 control-label">电话</label>
+                                <div class="col-sm-10">
+                                    <input type="phone" class="form-control" id="userPhone" name="userPhone" placeholder="请输入电话" value="{{ result.userPhone }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress" class="col-sm-2 control-label">地址</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="userAddress" name="userAddress" placeholder="请输入地址" value="{{ result.userAddress }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDior" class="col-sm-2 control-label">简介</label>
+                                <div class="col-sm-10">
+                                        <textarea name="userInstruct" cols="30" rows="10" id="userInstruct" placeholder="请输入简介" class="col-md-10 instruct">{{ result.userInstruct }}</textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default">保存</button>
+                                    <a href="/admin/index" class="btn btn-danger">取消</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
-                    <div class="panel-body">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>姓名</th>
-                                    <th>年龄</th>
-                                    <th>性别</th>
-                                    <th>手机号码</th>
-                                    <th>操作</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{ each result value }}
-                                <tr>
-                                    <th scope="row">{{ value.userName }}</th>
-                                    <td>{{ value.userAge }}</td>
-                                    <td>{{ value.userSex }}</td>
-                                    <td>{{ value.userPhone }}</td>
-                                    <td>
-                                        <a href="/admin/edit/{{ value._id}}" class="btn btn-success">编辑</a>
-                                        <a href="/admin/delete/{{ value._id}}" class="btn btn-danger">删除</a>
-                                    </td>
-                                </tr>
-                                {{ /each }}
-                            </tbody>
-                        </table>
-                    </div>
+
                 </div>
             </div>
         </div>

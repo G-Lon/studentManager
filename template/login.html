@@ -42,13 +42,13 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="userName" id="inputEmail3" placeholder="请输入用户名">
+                                    <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入用户名" autofocus>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" name="userPass" id="inputPassword3" placeholder="请输入密码">
+                                    <input type="password" class="form-control" name="userPass" id="userPass" placeholder="请输入密码">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -60,7 +60,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-success">登录</button>
+                                    <button type="submit" class="btn btn-success login">登录</button>
                                     <a href="/manager/register" class="btn btn-danger">注册</a>
                                 </div>
                             </div>
@@ -79,8 +79,21 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 
+<!-- 引入md5加密编译文件 -->
+<script src="/md5/md5.min.js"></script>
+
 <script>
     $('.vCode').on('click',function () { 
         $(this).attr('src','/manager/vCode?'+ Date.now())
+     })
+
+
+     $('.login').on('click',function () { 
+        let userPass = $('#userPass').val();
+        // 对输入的密码进行加密
+        // $('#userPass').val(md5(userPass)
+
+        // md5(userPass,'keyboard cat') 加上参数2时可以将加密的数据更加安全
+        $('#userPass').val(md5(userPass,'keyboard cat'))
      })
 </script>
